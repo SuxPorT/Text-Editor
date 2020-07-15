@@ -13,11 +13,14 @@ namespace TextEditor
 {
 	public partial class Form1 : Form
 	{
+		StringReader leitura = null;
+
 		public Form1()
 		{
 			InitializeComponent();
 		}
 
+		// Funções principais
 		private void Novo()
 		{
 			this.rtb_texto.Clear();
@@ -78,6 +81,59 @@ namespace TextEditor
 			}
 		}
 
+		private void Impirmir()
+		{
+			this.printDialog1.Document = this.printDocument1;
+			string texto = this.rtb_texto.Text;
+			this.leitura = new StringReader(texto);
+
+			if (this.printDialog1.ShowDialog() == DialogResult.OK) {
+				this.printDocument1.Print();
+			}
+		}
+
+		private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+		{
+			float linhasPagina = 0;
+			float posicaoY = 0;
+			int contador = 0;
+			float margemEsquerda = e.MarginBounds.Left - 50;
+			float margemSuperior = e.MarginBounds.Top - 50;
+
+			if (margemEsquerda < 5)
+			{
+				margemEsquerda = 20;
+			}
+
+			if (margemSuperior < 5)
+			{
+				margemSuperior = 20;
+			}
+
+			Font fonte = this.rtb_texto.Font;
+			SolidBrush pincel = new SolidBrush(Color.Black);
+			linhasPagina = e.MarginBounds.Height / Font.GetHeight(e.Graphics);
+			string linha = this.leitura.ReadLine();
+
+			while (contador++ < linhasPagina)
+			{
+				posicaoY = (margemSuperior + (contador * fonte.GetHeight(e.Graphics)));
+				e.Graphics.DrawString(linha, fonte, pincel, margemEsquerda, posicaoY, new StringFormat());
+				linha = this.leitura.ReadLine();
+			}
+
+			if (linha != null)
+			{
+				e.HasMorePages = true;
+			}
+			else
+			{
+				e.HasMorePages = false;
+			}
+
+			pincel.Dispose();
+		}
+
 		private void Copiar()
 		{
 			if (rtb_texto.SelectionLength > 0)
@@ -95,18 +151,51 @@ namespace TextEditor
 		{
 			string fonte = null;
 			float tamanho = 0;
+			bool negrito, italico, sublinhado;
+
+			fonte = rtb_texto.Font.Name;
+			tamanho = rtb_texto.Font.Size;
+			negrito = rtb_texto.SelectionFont.Bold;
+			italico = rtb_texto.SelectionFont.Italic;
+			sublinhado = rtb_texto.SelectionFont.Underline;
 
 			if (this.rtb_texto.SelectionFont.Bold)
 			{
-				fonte = rtb_texto.Font.Name;
-				tamanho = rtb_texto.Font.Size;
-				this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Regular);
+				if (italico && sublinhado)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Italic | FontStyle.Underline);
+				}
+				else if	(italico)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Italic);
+				}
+				else if (sublinhado)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Underline);
+				}
+				else
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho);
+				}
 			}
 			else
 			{
-				fonte = rtb_texto.Font.Name;
-				tamanho = rtb_texto.Font.Size;
-				this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Bold);
+				if (italico && sublinhado)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
+				}
+				else if (italico)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Bold | FontStyle.Italic);
+				}
+				else if (sublinhado)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Bold | FontStyle.Underline);
+				}
+				else
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Bold);
+				}
 			}
 		}
 
@@ -114,18 +203,51 @@ namespace TextEditor
 		{
 			string fonte = null;
 			float tamanho = 0;
+			bool negrito, italico, sublinhado;
+
+			fonte = rtb_texto.Font.Name;
+			tamanho = rtb_texto.Font.Size;
+			negrito = rtb_texto.SelectionFont.Bold;
+			italico = rtb_texto.SelectionFont.Italic;
+			sublinhado = rtb_texto.SelectionFont.Underline;
 
 			if (this.rtb_texto.SelectionFont.Italic)
 			{
-				fonte = rtb_texto.Font.Name;
-				tamanho = rtb_texto.Font.Size;
-				this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Regular);
+				if (negrito && sublinhado)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Bold | FontStyle.Underline);
+				}
+				else if (negrito)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Bold);
+				}
+				else if (sublinhado)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Underline);
+				}
+				else
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho);
+				}
 			}
 			else
 			{
-				fonte = rtb_texto.Font.Name;
-				tamanho = rtb_texto.Font.Size;
-				this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Italic);
+				if (negrito && sublinhado)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Italic | FontStyle.Bold | FontStyle.Underline);
+				}
+				else if (negrito)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Italic | FontStyle.Bold);
+				}
+				else if (sublinhado)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Italic | FontStyle.Underline);
+				}
+				else
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Italic);
+				}
 			}
 		}
 
@@ -133,27 +255,132 @@ namespace TextEditor
 		{
 			string fonte = null;
 			float tamanho = 0;
+			bool negrito, italico, sublinhado;
+
+			fonte = rtb_texto.Font.Name;
+			tamanho = rtb_texto.Font.Size;
+			negrito = rtb_texto.SelectionFont.Bold;
+			italico = rtb_texto.SelectionFont.Italic;
+			sublinhado = rtb_texto.SelectionFont.Underline;
 
 			if (this.rtb_texto.SelectionFont.Underline)
 			{
-				fonte = rtb_texto.Font.Name;
-				tamanho = rtb_texto.Font.Size;
-				this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Regular);
+				if (negrito && italico)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Bold | FontStyle.Underline);
+				}
+				else if (negrito)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Bold);
+				}
+				else if (italico)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Underline);
+				}
+				else
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho);
+				}
 			}
 			else
 			{
-				fonte = rtb_texto.Font.Name;
-				tamanho = rtb_texto.Font.Size;
-				this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Underline);
+				if (negrito && italico)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Underline | FontStyle.Bold | FontStyle.Underline);
+				}
+				else if (negrito)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Underline | FontStyle.Bold);
+				}
+				else if (italico)
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Underline | FontStyle.Italic);
+				}
+				else
+				{
+					this.rtb_texto.SelectionFont = new Font(fonte, tamanho, FontStyle.Underline);
+				}
 			}
 		}
 
-		private void btn_novo_Click(object sender, EventArgs e)
+		private void AlinharCentralizado()
+		{
+			this.rtb_texto.SelectionAlignment = HorizontalAlignment.Center;
+		}
+
+		private void AlinharEsquerda()
+		{
+			this.rtb_texto.SelectionAlignment = HorizontalAlignment.Left;
+		}
+
+		private void AlinharDireita()
+		{
+			this.rtb_texto.SelectionAlignment = HorizontalAlignment.Right;
+		}
+
+		// Eventos do Menu Strip
+		private void novoToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.Novo();
 		}
 
-		private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+		private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Abrir();
+		}
+
+		private void salvarToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Salvar();
+		}
+
+		private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Impirmir();
+		}
+
+		private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Copiar();
+		}
+
+		private void colarToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Colar();
+		}
+
+		private void negritoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Negrito();
+		}
+
+		private void itálicoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Italico();
+		}
+
+		private void sublinhadoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Sublinhado();
+		}
+
+		private void centralizadoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.AlinharCentralizado();
+		}
+
+		private void esquerdaToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.AlinharEsquerda();
+		}
+
+		private void direitaToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.AlinharDireita();
+		}
+
+		// Eventos do Tool Strip
+		private void btn_novo_Click(object sender, EventArgs e)
 		{
 			this.Novo();
 		}
@@ -163,17 +390,7 @@ namespace TextEditor
 			this.Abrir();
 		}
 
-		private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.Abrir();
-		}
-
 		private void btn_salvar_Click(object sender, EventArgs e)
-		{
-			this.Salvar();
-		}
-
-		private void salvarToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.Salvar();
 		}
@@ -183,17 +400,7 @@ namespace TextEditor
 			this.Copiar();
 		}
 
-		private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.Copiar();
-		}
-
 		private void btn_colar_Click(object sender, EventArgs e)
-		{
-			this.Colar();
-		}
-
-		private void colarToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.Colar();
 		}
@@ -203,17 +410,7 @@ namespace TextEditor
 			this.Negrito();
 		}
 
-		private void negritoToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.Negrito();
-		}
-
 		private void btn_italico_Click(object sender, EventArgs e)
-		{
-			this.Italico();
-		}
-
-		private void itálicoToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.Italico();
 		}
@@ -223,9 +420,19 @@ namespace TextEditor
 			this.Sublinhado();
 		}
 
-		private void sublinhadoToolStripMenuItem_Click(object sender, EventArgs e)
+		private void btn_centralizado_Click(object sender, EventArgs e)
 		{
-			this.Sublinhado();
+			this.AlinharCentralizado();
+		}
+
+		private void btn_esquerda_Click(object sender, EventArgs e)
+		{
+			this.AlinharEsquerda();
+		}
+
+		private void btn_direita_Click(object sender, EventArgs e)
+		{
+			this.AlinharDireita();
 		}
 	}
 }
