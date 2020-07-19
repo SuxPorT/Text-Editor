@@ -339,6 +339,11 @@ namespace TextEditor
 			this.Impirmir();
 		}
 
+		private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
 		private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.Copiar();

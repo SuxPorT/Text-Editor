@@ -74,9 +74,13 @@
 			// 
 			// rtb_texto
 			// 
-			this.rtb_texto.Location = new System.Drawing.Point(0, 52);
+			this.rtb_texto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.rtb_texto.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rtb_texto.Location = new System.Drawing.Point(12, 52);
 			this.rtb_texto.Name = "rtb_texto";
-			this.rtb_texto.Size = new System.Drawing.Size(483, 204);
+			this.rtb_texto.Size = new System.Drawing.Size(600, 317);
 			this.rtb_texto.TabIndex = 0;
 			this.rtb_texto.Text = "";
 			// 
@@ -88,7 +92,7 @@
             this.formatarToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(483, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(624, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -108,41 +112,42 @@
 			// novoToolStripMenuItem
 			// 
 			this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-			this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.novoToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
 			this.novoToolStripMenuItem.Text = "Novo";
 			this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
 			// 
 			// abrirToolStripMenuItem
 			// 
 			this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-			this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.abrirToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
 			this.abrirToolStripMenuItem.Text = "Abrir";
 			this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
 			// 
 			// salvarToolStripMenuItem
 			// 
 			this.salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
-			this.salvarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.salvarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
 			this.salvarToolStripMenuItem.Text = "Salvar";
 			this.salvarToolStripMenuItem.Click += new System.EventHandler(this.salvarToolStripMenuItem_Click);
 			// 
 			// imprimirToolStripMenuItem
 			// 
 			this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-			this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
 			this.imprimirToolStripMenuItem.Text = "Imprimir";
 			this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(117, 6);
 			// 
 			// sairToolStripMenuItem
 			// 
 			this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
 			this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.sairToolStripMenuItem.Text = "Sair";
+			this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
 			// 
 			// editarToolStripMenuItem
 			// 
@@ -156,14 +161,14 @@
 			// copiarToolStripMenuItem
 			// 
 			this.copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
-			this.copiarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.copiarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
 			this.copiarToolStripMenuItem.Text = "Copiar";
 			this.copiarToolStripMenuItem.Click += new System.EventHandler(this.copiarToolStripMenuItem_Click);
 			// 
 			// colarToolStripMenuItem
 			// 
 			this.colarToolStripMenuItem.Name = "colarToolStripMenuItem";
-			this.colarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.colarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
 			this.colarToolStripMenuItem.Text = "Colar";
 			this.colarToolStripMenuItem.Click += new System.EventHandler(this.colarToolStripMenuItem_Click);
 			// 
@@ -181,21 +186,21 @@
 			// negritoToolStripMenuItem
 			// 
 			this.negritoToolStripMenuItem.Name = "negritoToolStripMenuItem";
-			this.negritoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.negritoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
 			this.negritoToolStripMenuItem.Text = "Negrito";
 			this.negritoToolStripMenuItem.Click += new System.EventHandler(this.negritoToolStripMenuItem_Click);
 			// 
 			// itálicoToolStripMenuItem
 			// 
 			this.itálicoToolStripMenuItem.Name = "itálicoToolStripMenuItem";
-			this.itálicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.itálicoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
 			this.itálicoToolStripMenuItem.Text = "Itálico";
 			this.itálicoToolStripMenuItem.Click += new System.EventHandler(this.itálicoToolStripMenuItem_Click);
 			// 
 			// sublinhadoToolStripMenuItem
 			// 
 			this.sublinhadoToolStripMenuItem.Name = "sublinhadoToolStripMenuItem";
-			this.sublinhadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.sublinhadoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
 			this.sublinhadoToolStripMenuItem.Text = "Sublinhado";
 			this.sublinhadoToolStripMenuItem.Click += new System.EventHandler(this.sublinhadoToolStripMenuItem_Click);
 			// 
@@ -206,7 +211,7 @@
             this.esquerdaToolStripMenuItem,
             this.direitaToolStripMenuItem});
 			this.alinhadoToolStripMenuItem.Name = "alinhadoToolStripMenuItem";
-			this.alinhadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.alinhadoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
 			this.alinhadoToolStripMenuItem.Text = "Alinhamento";
 			// 
 			// centralizadoToolStripMenuItem
@@ -249,12 +254,14 @@
             this.btn_direita});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
 			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(483, 25);
+			this.toolStrip1.Size = new System.Drawing.Size(624, 25);
 			this.toolStrip1.TabIndex = 2;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
 			// btn_novo
 			// 
+			this.btn_novo.BackgroundImage = global::TextEditor.Properties.Resources._new;
+			this.btn_novo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_novo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_novo.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_novo.Name = "btn_novo";
@@ -264,6 +271,8 @@
 			// 
 			// btn_abrir
 			// 
+			this.btn_abrir.BackgroundImage = global::TextEditor.Properties.Resources.open;
+			this.btn_abrir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_abrir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_abrir.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_abrir.Name = "btn_abrir";
@@ -273,6 +282,8 @@
 			// 
 			// btn_salvar
 			// 
+			this.btn_salvar.BackgroundImage = global::TextEditor.Properties.Resources.save;
+			this.btn_salvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_salvar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_salvar.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_salvar.Name = "btn_salvar";
@@ -287,6 +298,8 @@
 			// 
 			// btn_copiar
 			// 
+			this.btn_copiar.BackgroundImage = global::TextEditor.Properties.Resources.copy;
+			this.btn_copiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_copiar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_copiar.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_copiar.Name = "btn_copiar";
@@ -296,6 +309,8 @@
 			// 
 			// btn_colar
 			// 
+			this.btn_colar.BackgroundImage = global::TextEditor.Properties.Resources.paste;
+			this.btn_colar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_colar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_colar.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_colar.Name = "btn_colar";
@@ -310,6 +325,8 @@
 			// 
 			// btn_negrito
 			// 
+			this.btn_negrito.BackgroundImage = global::TextEditor.Properties.Resources.bold;
+			this.btn_negrito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_negrito.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_negrito.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_negrito.Name = "btn_negrito";
@@ -319,6 +336,8 @@
 			// 
 			// btn_italico
 			// 
+			this.btn_italico.BackgroundImage = global::TextEditor.Properties.Resources.italic;
+			this.btn_italico.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_italico.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_italico.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_italico.Name = "btn_italico";
@@ -328,6 +347,8 @@
 			// 
 			// btn_sublinhado
 			// 
+			this.btn_sublinhado.BackgroundImage = global::TextEditor.Properties.Resources.underline;
+			this.btn_sublinhado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_sublinhado.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_sublinhado.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_sublinhado.Name = "btn_sublinhado";
@@ -342,6 +363,8 @@
 			// 
 			// btn_centralizado
 			// 
+			this.btn_centralizado.BackgroundImage = global::TextEditor.Properties.Resources.center;
+			this.btn_centralizado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_centralizado.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_centralizado.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_centralizado.Name = "btn_centralizado";
@@ -351,6 +374,8 @@
 			// 
 			// btn_esquerda
 			// 
+			this.btn_esquerda.BackgroundImage = global::TextEditor.Properties.Resources.left;
+			this.btn_esquerda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_esquerda.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_esquerda.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_esquerda.Name = "btn_esquerda";
@@ -360,6 +385,8 @@
 			// 
 			// btn_direita
 			// 
+			this.btn_direita.BackgroundImage = global::TextEditor.Properties.Resources.right;
+			this.btn_direita.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.btn_direita.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.btn_direita.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btn_direita.Name = "btn_direita";
@@ -388,7 +415,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(483, 254);
+			this.ClientSize = new System.Drawing.Size(624, 381);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.rtb_texto);
 			this.Controls.Add(this.menuStrip1);
